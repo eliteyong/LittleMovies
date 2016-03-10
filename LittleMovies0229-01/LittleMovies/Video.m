@@ -85,11 +85,18 @@ typedef NS_ENUM(NSUInteger,isHiddenY_N) {
 - (void)creatVideo:(CGRect)frame{
     PassURL *pass =[PassURL sharePass];
     NSString *url = [NSString string];
+    NSLog(@"%@",pass.model.playurl);
     if (pass.model.playurl[@"360P"]) {
         url = pass.model.playurl[@"360P"];
-    }else{
+    }else {
         url = pass.model.playurl[@"720P"];
     }
+    
+//    if (pass.model.playurl[@"360P"]) {
+//        url = pass.model.playurl[@"360P"];
+//    }else if (pass.model.playurl[@"720P"]){
+//        url = pass.model.playurl[@"720P"];
+//    } else {return;}
     
     Player *play = [Player sharePlayer];
     self.item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:url]];
